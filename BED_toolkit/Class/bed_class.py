@@ -28,13 +28,16 @@ class Bed_tools:
         assert all(isinstance(key, str) for key in bed_data.keys()),"The key of the dict are not string"
 
         # Check if Start and End  are interger
+        # I think this assertion never is going to happen because if this happen, and error would raise in read_bed_file
+        # I have validated this adding an try/except line 33
+        # I think the next 6 lines are unnecessary
         count_lines = 0
         for l1 in bed_data.values():
             for l2 in l1:
                 count_lines +=1
                 for e in l2:
                     assert isinstance(e, int), f"Values of the dictionnary aren't lists of integers. Assert found in line number  '{count_lines}' of the bed file."
-            
+        
         # Check Start is before End
         count_lines = 0
         for l1 in bed_data.values():
@@ -55,7 +58,7 @@ class Bed_tools:
                     if int(position) in range(values[0], values[1]):
                         
                         output = "Your position is covered by this bed file"
-                        return (output, key,values)
+                        return output, key,values
                         
                 return "Your position is not coveraged by this bed file"
 

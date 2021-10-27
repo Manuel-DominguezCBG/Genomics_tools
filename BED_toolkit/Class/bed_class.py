@@ -1,59 +1,65 @@
 
 '''
-Read BED files and do basic checking
-
+Tools to validate and manipulate bed files.
+Created by Manuel Dominguez
 '''
-import pandas as pd
 
-class Read_file():
+class Bed_tools:  
     '''
-    Load bed data
+    Validation and target_rigion funtions 
     '''
-    def __init__(self, file_path): 
-        self.file_path = file_path
-        
-    def load_data(self):
+    def __init__(self, BED): 
         '''
-        Load data from file 
-        '''
-        sequence = {}
-        with open(self.file_path) as f:
-            for line in f:
-                star_end_list = []
-                if line.startswith('chr'):
-                    chr, start, end = line.split()[:3]
-                    star_end_list.append(start)
-                    star_end_list.append(end)
-                    sequence[chr] = star_end_list
-        return sequence
-                    
-            
-            
-
-
-class Sequence:  
-    '''
-    Basic tools to analysed DNA sequence
-    '''
-    def __init__(self, DNA): 
-        '''
-        Stores original sequence
+        Stores original bed data
         '''
         try:
-            self.DNA = self.validation(DNA)
+            self.BED = self.validation(BED)
         except AssertionError:
             print("Do not pass validation")
-    def test(self):
-        return self.DNA
-    def validation(self, sequence):
+
+
+    def validation(self, bed_data):
         """
-      Some basic validation.
+        Validate if data taken from bed file is correct
+        Bed file data is saved in a dict
+        {'chr7': [127479365, 127480532], 'chr8': [127474697, 127475864]}
         """
-        # Check if chr values are string
-        assert all(isinstance(key, str) for key in sequence.keys()),"The key of the dict are not string"
+        # Check if chromosomes values are string
+        assert all(isinstance(key, str) for key in bed_data.keys()),"The key of the dict are not string"
+
         # Check if Start and End  are interger
+        count_lines = 0
+        for l1 in bed_data.values():
+            for l2 in l1:
+                count_lines +=1
+                for e in l2:
+                    assert isinstance(e, int), f"Values of the dictionnary aren't lists of integers. Assert found in line number  '{count_lines}' of the bed file."
+            
+        # Check Start is before End
+        count_lines = 0
+        for l1 in bed_data.values():
+            for l2 in l1:
+                count_lines +=1
+                assert l2[0]<l2[1], f"START > END position. Assert found in line number  '{count_lines }' of the bed file."
+            
+        return bed_data
+
+
+    def targe_region(self, bed,chro,position):
+        """
+        Tool 1: Look is position is covered by the Bed file input.
+        """
+        for key,value in bed.items():
+            if key == chro:
+                for values in value:
+                    if int(position) in range(values[0], values[1]):
+                        
+                        output = "Your position is covered by this bed file"
+                        return (output, key,values)
+                        
+                return "Your position is not coveraged by this bed file"
 
 
 
-        # Return validated data
+
 

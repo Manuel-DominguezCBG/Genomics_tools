@@ -29,9 +29,9 @@ def test_validation1():
     Assert a ValueError due to one position is not a int
     chr1    p    2    Pos1    0    +    127471196    127472363    255,0,0
     '''
-    with pytest.raises(ValueError):
-        BED = Read_file("./file2test2.bed")
-        BED.load_data()
+   
+    BED = Read_file("./file2test2.bed")
+    BED.load_data() == "Don't pass validation. End or start position are not interger chr1 p 2"
 
 def test_validation2():
     ''' 

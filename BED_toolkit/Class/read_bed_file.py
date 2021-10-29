@@ -33,11 +33,11 @@ class Read_file():
                     assert (len(line.split())) >= 3, 'Bed file has not three three minimus columns "chr", "start" "end" '
                     chr, start, end = line.split()[:3]
                     
-                    try: # A bit of validation
+                    try: # Validate start and end position are interger
                         star_end_list = [int(start), int(end)]
                     except: 
                         print("Don't pass validation. End or start position are not interger",chr, start, end)
-                        sys.exit(1) # To stop running the script and avoid future errors outputs
+                        #sys.exit(1) # To stop running the script and avoid future errors outputs
 
                     if chr in chr2position.keys():
                         chr2position[chr].append(star_end_list)

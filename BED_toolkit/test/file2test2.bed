@@ -1,4 +1,4 @@
 # browser position chr7:127471196-127495720
 # browser hide all
 track name="ItemRGBDemo" description="Item RGB demonstration" visibility=2 itemRgb="On"
-chr1    "1"    2    Pos1    0    +    127471196    127472363    255,0,0
+chr1    p    2    Pos1    0    +    127471196    127472363    255,0,0

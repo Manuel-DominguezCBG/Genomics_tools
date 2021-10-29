@@ -5,9 +5,6 @@ Created by Manuel Dominguez
 import sys
 
 class Read_file():
-    '''
-    Load bed data
-    '''
     def __init__(self, file_path): 
         self.file_path = file_path
 
@@ -15,13 +12,15 @@ class Read_file():
         '''Load data from file
         Create a empty dict,
         open the file and read line by line
-        Recognise the lines that contains the data, 
-        check that this data satisfyies the minimun
+        recognise the lines that contains the data, 
+        check if this data satisfies the minimun req
         split this lines and save this in chromosomes, start and end positions
         Per iteration, store interger position in a list
-        save these lists in the chromosome that belong to
-        Return a dict
+        save these lists in the chromosome that belong to and 
+        return a dict with this structure
         'chr1': [[1, 2], [3, 4], [5, 6], [7, 8]], 'chr20': [[1, 2], [3, 4]] ...
+
+        I have add some validation here
         '''
         chr2position = {}
         with open(self.file_path) as f:

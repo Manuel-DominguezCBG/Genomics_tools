@@ -1,9 +1,21 @@
 import sys
 from clases.sequence import Sequence
 from clases.read_file import Read_file
+import argparse
 
 # The input:
+try:
+    
+    user_input = sys.stdin.read().strip()
+except:
+    "sys.argv argument given"
+
 user_input = sys.argv[1]
+
+# try:
+#     user_input = sys.stdin.read().strip()
+# except:
+#     "echo argument given"
 
 # To be able to get two type of input
 # A sequence from the command line 
@@ -37,3 +49,7 @@ print("\n")
 
 print("GC proportion")
 print(DNA.gc_percentage())
+
+
+
+

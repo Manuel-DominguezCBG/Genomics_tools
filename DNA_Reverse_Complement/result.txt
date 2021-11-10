@@ -1,0 +1,5 @@
+Length 12
+Reverse AAAAAAAAAAAA
+complement TTTTTTTTTTTT
+Reverse and complement TTTTTTTTTTTT
+gc_percentage No pyrimidine bases found in your sequence input

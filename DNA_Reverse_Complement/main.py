@@ -4,11 +4,10 @@ from clases.read_file import Read_file
 import argparse
 
 # The input:
-try:
-    
-    user_input = sys.stdin.read().strip()
-except:
-    "sys.argv argument given"
+# try:
+# user_input = sys.stdin.read().strip()
+# except:
+#     "sys.argv argument given"
 
 user_input = sys.argv[1]
 

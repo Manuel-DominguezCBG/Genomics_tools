@@ -1,5 +1,5 @@
-Length 12
-Reverse AAAAAAAAAAAA
-complement TTTTTTTTTTTT
-Reverse and complement TTTTTTTTTTTT
+Length 4
+Reverse ATAT
+complement ATAT
+Reverse and complement TATA
 gc_percentage No pyrimidine bases found in your sequence input

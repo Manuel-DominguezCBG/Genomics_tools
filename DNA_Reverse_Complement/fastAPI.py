@@ -2,12 +2,16 @@ import sys
 from clases.sequence import Sequence
 from clases.read_file import Read_file
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+
+# to run this uvicorn fastAPI:app
  
-app = FastAPI()
+app = FastAPI()  # to create a FastAPI instance
  
-@app.get("/DNA_toolkit")
-def API(input: str):                        # pass the sequence in, this time as a query param
+@app.get("/DNA_toolkit")  # to define a path operation decorator
+                          # this tells FastAPI that the function is in charge of handling requests
+                          # that go to the path / using a get operation
+
+def API(input: str):      # pass the sequence in, this time as a query param
     DNA = Sequence(input)
     
     res = {"Length": str(DNA.length()),         # for the txt file
